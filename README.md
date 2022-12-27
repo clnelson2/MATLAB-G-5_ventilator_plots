@@ -1,5 +1,5 @@
 # Automated Visualization of Pulmonary Function using MATLAB
-The MATLAB code as posted allows for representation of ventilator dynamics, with running average filters to reduce outlier data, ability to interpolate for statistical analysis, and output additionally offers researchers tools to analyze progression of lung function and/or injury.
+The MATLAB code as posted allows for representation of ventilator dynamics, with running average filters to reduce outlier data, and output additionally offers visual tool to analyze progression of lung function and/or injury.
 Datasets are also available for testing code as posted here.
 To operate these scripts, MATLAB R2015b or higher is required. Optional Statistical Analysis Toolboxes are required, if statistical analysis is desired between groups. Parallel Computing Toolbox is required to run parallel computing in ‘import_subject_files.m’ function. This can otherwise be commented out.
 
@@ -17,7 +17,8 @@ Example:('ALI1','12:00:00','ALI-1/V-1.xlsx')
 
 Description: (‘parent folder’,’time monitoring period began (hh:mm:ss)’ ‘parent folder/excel file’)
 
-Run ‘import_subject_files.m’ script once folder organization is complete. At this point, the importation of data into your workspace will consist of both raw data, and data that has been filtered and interpolated in the case of ‘Nans’. Filtering in this script is tailored to the use of an experimental conscious model. Depending on application, filtering can be adjusted to more or less sensitivity in data reduction.
+Run ‘import_subject_files.m’ script once folder organization is complete. At this point, the importation of data into your workspace will consist of both raw data, and data that has been filtered and interpolated in the case of ‘Nans’. Filtering in this script is tailored to the use of an experimental animal model (with excess 'noise' data points). Depending on application, filtering can be adjusted to more or less sensitivity in data reduction.
+
 import_subject_files.m script consists of three sections, the initial ‘read_subject_xls.m’ is used to read selected data points out of named folders, and import these sections as raw data into your workspace. read_subject_xls.m will skip variables that may or may not be included in experimental design, such as optional sensors, or differences in various ventilator modes. All data points are not included due to redundancy, or lack of experimental relevance, but can be added in. The initial section will also consist of the vent_filt.m function; that filters variables to eliminate artefacts and will save these into your workspace.
 
 The remaining two sections are examples of graphical data exports that can be used -one example in which individual subject variables are plotted, for this example the interplay between resistance and pressure variables; and the last section contains an example of group analysis. In this example, non-clinical models of acute lung injury (ALI), are displayed as a mean trend line as compared to a single example of a normal physiological pulmonary function.
